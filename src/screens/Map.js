@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet, } from 'react-native';
-// import MapView from 'react-native-maps';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 
 const Map = ({ route }) => {
@@ -44,8 +43,6 @@ const styles = StyleSheet.create({
     },
     mapContainer: {
         ...StyleSheet.absoluteFillObject,
-        // height: 500,
-        // width: 400,
         justifyContent: 'flex-end',
         alignItems: 'center',
         top: 0,

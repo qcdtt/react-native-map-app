@@ -22,6 +22,8 @@ const Home = () => {
 
     useFocusEffect(
         React.useCallback(() => {
+            setSearch('');
+            setSearchResults([]);
             dispatch(getHistory());
             return () => {
             };
@@ -65,7 +67,6 @@ const Home = () => {
             />
             <FlatList
                 data={searchResults}
-                // data={places!=null?place:[]}
                 ListEmptyComponent={() => (
                     <View style={styles.emptyListMsgContainer}>
                         <Text style={styles.emptyListMsgText}>There is no matched places.</Text>
