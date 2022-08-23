@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import PlaceReducer from './placeReducer';
 
 const appReducer = combineReducers({

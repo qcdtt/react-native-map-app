@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, FlatList, Text, } from 'react-native';
+import { View, FlatList, Text, } from 'react-native';
 import { SearchBar, SegmentedControl, } from '@ant-design/react-native';
 import { useNavigation } from '@react-navigation/native';
 import PlaceItem from '../../components/PlaceItem/PlaceItem';
@@ -65,20 +65,22 @@ const Home = () => {
 
     return (
         <View style={styles.container}>
-            {showResults ? (<SearchBar
-                style={styles.searchBar}
-                value={search}
-                placeholder='Search place'
-                onCancel={() => setSearch('')}
-                onChange={(value) => {
-                    if (showResults == false) {
-                        setShowResults(true);
-                        setShowHistory(false);
-                    }
-                    autocomplete(value)
-                }}
-                cancelText='X'
-            />) : ''}
+            {showResults ? (
+                <SearchBar
+                    style={styles.searchBar}
+                    value={search}
+                    placeholder='Search place'
+                    onCancel={() => setSearch('')}
+                    onChange={(value) => {
+                        if (showResults == false) {
+                            setShowResults(true);
+                            setShowHistory(false);
+                        }
+                        autocomplete(value)
+                    }}
+                    cancelText='X'
+                />
+            ) : ''}
             <SegmentedControl
                 values={['Search Results', 'History']}
                 tintColor={'#1253bc'}
@@ -93,16 +95,18 @@ const Home = () => {
                 }}
             />
             {
-                (showResults || search && showHistory == false) ? (<FlatList
-                    data={searchResults}
-                    ListEmptyComponent={() => (
-                        <View style={styles.emptyListMsgContainer}>
-                            <Text style={styles.emptyListMsgText}>There is no matched place.</Text>
-                        </View>
-                    )}
-                    renderItem={({ item }) => <PlaceItem item={item} type='Results' />}
-                    keyExtractor={item => item.name}
-                />) : ''
+                (showResults || search && showHistory == false) ? (
+                    <FlatList
+                        data={searchResults}
+                        ListEmptyComponent={() => (
+                            <View style={styles.emptyListMsgContainer}>
+                                <Text style={styles.emptyListMsgText}>There is no matched place.</Text>
+                            </View>
+                        )}
+                        renderItem={({ item }) => <PlaceItem item={item} type='Results' />}
+                        keyExtractor={item => item.name}
+                    />
+                ) : ''
             }
             {
                 showHistory && places.loading == false ? (
@@ -118,7 +122,6 @@ const Home = () => {
                     />
                 ) : ''
             }
-
         </View>
     );
 }

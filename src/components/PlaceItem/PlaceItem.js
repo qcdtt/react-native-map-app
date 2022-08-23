@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, Alert, } from 'react-native';
 import { List, SwipeAction, } from '@ant-design/react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { saveHistory, removeHistory, } from '../../actions/place';
 import styles from './styles';
 
 const PlaceItem = ({ item, type }) => {
     const navigation = useNavigation();
-    const { places, searchHistory } = useSelector(state => state);
     const dispatch = useDispatch();
 
     const action = [
