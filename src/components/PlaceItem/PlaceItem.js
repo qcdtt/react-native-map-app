@@ -22,7 +22,7 @@ const PlaceItem = ({ item, type }) => {
 
     const deleteHistory = (history) => {
         dispatch(removeHistory(history));
-        Alert.alert(history.name + 'has been removed from the search history.')
+        Alert.alert(history.name + ' has been removed from the search history.')
     }
 
     const Item = List.Item;
