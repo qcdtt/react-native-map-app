@@ -8,6 +8,9 @@ import {
     SAVE_HISTORY,
     SAVE_HISTORY_SUCCESS,
     SAVE_HISTORY_FAILED,
+    REMOVE_HISTORY,
+    REMOVE_HISTORY_SUCCESS,
+    REMOVE_HISTORY_FAILED,
 } from "./types";
 
 export const searchPlace = payload => ({
@@ -52,5 +55,20 @@ export const saveHistorySuccess = payload => ({
 
 export const saveHistoryFailed = payload => ({
     type: SAVE_HISTORY_FAILED,
+    payload,
+});
+
+export const removeHistory = payload => ({
+    type: REMOVE_HISTORY,
+    payload,
+});
+
+export const removeHistorySuccess = payload => ({
+    type: REMOVE_HISTORY_SUCCESS,
+    payload,
+});
+
+export const removeHistoryFailed = payload => ({
+    type: REMOVE_HISTORY_FAILED,
     payload,
 });

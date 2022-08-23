@@ -6,7 +6,6 @@ const createHistory = (baseURL = 'https://63025017c6dda4f287b79680.mockapi.io/se
     headers: {
       'Cache-Control': 'no-cache',
     },
-    timeout: 10000,
   });
 
   const setAuthToken = userAuth => api.setHeader('X-Auth-Token', userAuth);
@@ -15,6 +14,7 @@ const createHistory = (baseURL = 'https://63025017c6dda4f287b79680.mockapi.io/se
 
   const getHistory = async() => await api.get('/');
   const saveHistory = async(place) => await api.post('/', place);
+  const removeHistory = async(history) => await api.delete('/' + history.id);
 
   return {
     api,
@@ -23,6 +23,7 @@ const createHistory = (baseURL = 'https://63025017c6dda4f287b79680.mockapi.io/se
     removeAuthToken,
     getHistory,
     saveHistory,
+    removeHistory,
   };
 };
 

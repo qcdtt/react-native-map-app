@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../screens/Home';
-import Map from '../screens/Map';
+import Home from '../screens/Home/Home';
+import Map from '../screens/Map/Map';
 
 const Stack = createStackNavigator();
 
@@ -22,7 +22,7 @@ const AppStack = () => {
                 padding: 10,
               },
           }}>
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Home" component={Home} options={{ title: 'Map App' }}/>
           <Stack.Screen name="Map" component={Map} />
         </Stack.Navigator>
       }

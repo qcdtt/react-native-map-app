@@ -6,7 +6,6 @@ const create = (baseURL = 'https://63025017c6dda4f287b79680.mockapi.io/places/')
     headers: {
       'Cache-Control': 'no-cache',
     },
-    timeout: 10000,
   });
 
   const setAuthToken = userAuth => api.setHeader('X-Auth-Token', userAuth);

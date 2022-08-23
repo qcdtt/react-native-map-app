@@ -1,7 +1,7 @@
 import { call, fork, put, select, takeLatest } from 'redux-saga/effects';
 import api from '../services/placeApi';
 import searchHistoryApi from '../services/searchHistoryApi';
-import { SEARCH_PLACE, GET_HISTORY, SAVE_HISTORY, } from '../actions/types';
+import { SEARCH_PLACE, GET_HISTORY, SAVE_HISTORY, REMOVE_HISTORY, } from '../actions/types';
 import {
     searchPlaceSuccess,
     searchPlaceFailed,
@@ -9,6 +9,8 @@ import {
     saveHistoryFailed,
     getHistorySuccess,
     getHistoryFailed,
+    removeHistorySuccess,
+    removeHistoryFailed,
 } from '../actions/place';
 
 function* workerGetPlaceSaga(params) {
@@ -77,6 +79,24 @@ function* workerSaveHistorySaga(params) {
     }
 }
 
+function* workerRemoveHistorySaga(params) {
+    try {
+        const state = yield select();
+        const newHistory = yield state.places.searchHistory.filter(data => {
+            return data.name !== params.payload.name;
+        });
+        
+        console.log('new history: ' + JSON.stringify(newHistory));
+
+        yield call(searchHistoryApi.removeHistory, params.payload);
+
+        yield put(removeHistorySuccess([...newHistory]));
+    } catch (error) {
+        yield put(removeHistoryFailed(error));
+        console.log(error);
+    }
+}
+
 function* getPlaceSaga() {
     yield takeLatest(SEARCH_PLACE, workerGetPlaceSaga);
 }
@@ -89,8 +109,13 @@ function* saveHistorySaga() {
     yield takeLatest(SAVE_HISTORY, workerSaveHistorySaga);
 }
 
+function* removeHistorySaga() {
+    yield takeLatest(REMOVE_HISTORY, workerRemoveHistorySaga);
+}
+
 export const watcherPlace = [
     fork(getPlaceSaga),
     fork(getHistorySaga),
     fork(saveHistorySaga),
+    fork(removeHistorySaga),
 ];

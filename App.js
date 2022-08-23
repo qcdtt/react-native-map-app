@@ -1,9 +1,9 @@
 import React from 'react';
 import AppStack from './src/navigation/appNavigation';
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/es/integration/react';
-import {store, persistor} from './src/config/ReduxStore';
-import {enableLatestRenderer} from 'react-native-maps';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/es/integration/react';
+import { store, persistor } from './src/config/ReduxStore';
+import { enableLatestRenderer } from 'react-native-maps';
 
 enableLatestRenderer();
 

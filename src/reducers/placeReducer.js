@@ -8,6 +8,9 @@ import {
     SAVE_HISTORY,
     SAVE_HISTORY_SUCCESS,
     SAVE_HISTORY_FAILED,
+    REMOVE_HISTORY,
+    REMOVE_HISTORY_SUCCESS,
+    REMOVE_HISTORY_FAILED,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -77,6 +80,22 @@ export default (state, action) => {
                 ...state,
                 loadingUpdate: false,
             }
+        case REMOVE_HISTORY:
+            return {
+                ...state,
+                loadingUpdate: false,
+            };
+        case REMOVE_HISTORY_SUCCESS:
+            return {
+                ...state,
+                searchHistory: [...action.payload],
+                loadingUpdate: false,
+            };
+        case REMOVE_HISTORY_FAILED:
+            return {
+                ...state,
+                loadingUpdate: false,
+            };
         default:
             return state;
     }
