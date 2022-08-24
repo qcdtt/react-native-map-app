@@ -9,6 +9,11 @@ The search history will be saved and the user is allowed to view back the specif
 ```
 npm install
 ```
+*&* 
+```
+cd ios
+pod install
+```
 
 ### Launch the app: 
 ```
